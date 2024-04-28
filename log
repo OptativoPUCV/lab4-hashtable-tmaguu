@@ -1,0 +1,34 @@
+Sun 28 Apr 2024 03:18:23 AM UTC: 
+ hashmap.c | 120 ++++++++++++++++++++++++++++++++++++++++----------------------
+ 1 file changed, 78 insertions(+), 42 deletions(-)
+In file included from test.c:4:
+hashmap.c: In function ‘insertMap’:
+hashmap.c:22:16: error: implicit declaration of function ‘hash’ [-Werror=implicit-function-declaration]
+   22 |     long pos = hash(key,map->capacity);
+      |                ^~~~
+hashmap.c:27:25: error: implicit declaration of function ‘createPair’; did you mean ‘createMap’? [-Werror=implicit-function-declaration]
+   27 |     map->buckets[pos] = createPair(key,value);
+      |                         ^~~~~~~~~~
+      |                         createMap
+hashmap.c:27:23: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   27 |     map->buckets[pos] = createPair(key,value);
+      |                       ^
+hashmap.c: In function ‘eraseMap’:
+hashmap.c:64:12: error: implicit declaration of function ‘is_equal’ [-Werror=implicit-function-declaration]
+   64 |         if(is_equal(map->buckets[pos]->key,key))
+      |            ^~~~~~~~
+test.c: In function ‘initializeMap’:
+test.c:52:32: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   52 |         map->buckets[hashs[i]] =
+      |                                ^
+test.c: In function ‘search_test2’:
+test.c:259:20: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  259 |     map->buckets[9]=createPair(_strdup("key"),_strdup("value"));
+      |                    ^
+test.c: In function ‘erase_test2’:
+test.c:317:20: error: assignment to ‘Pair *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  317 |     map->buckets[9]=createPair(_strdup("key"),_strdup("value"));
+      |                    ^
+cc1: all warnings being treated as errors
+Compilation failed
+9369077
